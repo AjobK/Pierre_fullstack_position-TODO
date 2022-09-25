@@ -43,6 +43,7 @@ testem.log
 .gradle
 todo-list-backend/build
 todo-list-frontend/build
+node_modules
 
 
 # System Files
