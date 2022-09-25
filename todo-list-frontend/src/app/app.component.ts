@@ -16,6 +16,7 @@ import {Observable} from "rxjs";
       <app-progress-bar *ngIf="!(todos$ | async)?.length"></app-progress-bar>
       <app-todo-item
         *ngFor="let todo of todos$ | async | todoFilter : filterString"
+        (click)="removeTodo(todo)"
         [item]="todo">
       </app-todo-item>
     </div>
@@ -23,11 +24,21 @@ import {Observable} from "rxjs";
   styleUrls: ['app.component.scss']
 })
 export class AppComponent {
-
-  readonly todos$: Observable<Todo[]>;
+  todos$: Observable<Todo[]>; // Removed readonly as it may change based on removal
   filterString: string = '';
 
-  constructor(todoService: TodoService) {
+  constructor(protected todoService: TodoService) {
     this.todos$ = todoService.getAll();
+  }
+
+  removeTodo(todo: Todo) {
+    this.todoService.remove(todo.id).subscribe(
+      () => {
+        this.todos$ = this.todoService.getAll();
+      },
+      err => {
+        alert(`Could not remove TODO...\n\n[Message] '${ err }'`)
+      }
+    );
   }
 }

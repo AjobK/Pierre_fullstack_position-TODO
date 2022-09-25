@@ -30,6 +30,8 @@ export class TodoService {
 
   remove(id: number): Observable<void> {
     return new Observable<void>(observer => {
+      // My solution assumes that the random failure may not be removed
+      // and that this function may not be altered until a later exercise
       setTimeout(() => {
         if (Math.random() < .8) {
           removeFromMockData(id);
