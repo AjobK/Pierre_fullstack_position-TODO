@@ -41,6 +41,9 @@ testem.log
 /typings
 
 .gradle
+todo-list-backend/build
+todo-list-frontend/build
+
 
 # System Files
 .DS_Store
