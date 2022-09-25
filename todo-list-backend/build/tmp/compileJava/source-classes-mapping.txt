@@ -1,2 +1,8 @@
+com/todo/repositories/TodoRepository.java
+ com.todo.repositories.TodoRepository
 com/todo/TodoApplication.java
  com.todo.TodoApplication
+com/todo/entities/Todo.java
+ com.todo.entities.Todo
+com/todo/controllers/TodoController.java
+ com.todo.controllers.TodoController
